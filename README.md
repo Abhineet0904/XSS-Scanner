@@ -52,6 +52,6 @@ This tool injects context-aware payloads, detects reflections using marker-based
 
 Clone or download the script :
 ```
-git clone https://github.com/your-repo/xss-scanner.git
+git clone https://github.com/Abhineet0904/XSS-Scanner.git
 cd xss-scanner
 ```
