@@ -9,7 +9,7 @@ This tool injects context-aware payloads, detects reflections using marker-based
 
 ## Features
 
-- **PayloadGenerator** class that generates **context-aware payloads**, including :
+1. **PayloadGenerator** class that generates **context-aware payloads**, including :
   - `tag_name`
   - `attr_name` (attribute-name injection)
   - `attr_value`
@@ -17,22 +17,22 @@ This tool injects context-aware payloads, detects reflections using marker-based
   - `js`
   - `json` (for JSON POST bodies)
 
-- **Reflection detection** via substring marker matching.
+2. **Reflection detection** via substring marker matching.
 
-- **Supports GET and POST** requests (form or JSON).
+3. **Supports GET and POST** requests (form or JSON).
 
-- **Context auto-detection** (heuristic) :
+4. **Context auto-detection** (heuristic) :
   - tag-name
   - attribute-name
   - attribute-value
   - text node
   - JS block
 
-- **Produces reports** :
+5. **Produces reports** :
   - Terminal output
   - HTML report (`xss_report.html`)
 
-- **Optional features**
+6. **Additional features**
   - Parallel scanning (ThreadPoolExecutor)
   - Custom headers, cookies, and JSON-body scanning
   - Randomized marker-based payloads for simple WAF bypass
