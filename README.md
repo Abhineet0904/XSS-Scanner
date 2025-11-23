@@ -5,7 +5,9 @@ This tool injects context-aware payloads, detects reflections using marker-based
 
 **Use only on targets you own or have explicit permission to test. Unauthorized scanning may be illegal.**
 
+
 ---
+
 
 ## Features
 
@@ -17,9 +19,12 @@ This tool injects context-aware payloads, detects reflections using marker-based
   - `js`
   - `json` (for JSON POST bodies)
 
+
 2. **Reflection detection** via substring marker matching.
 
+
 3. **Supports GET and POST** requests (form or JSON).
+
 
 4. **Context auto-detection** (heuristic) :
   - tag-name
@@ -28,16 +33,20 @@ This tool injects context-aware payloads, detects reflections using marker-based
   - text node
   - JS block
 
+
 5. **Produces reports** :
   - Terminal output
   - HTML report (`xss_report.html`)
+
 
 6. **Additional features**
   - Parallel scanning (ThreadPoolExecutor)
   - Custom headers, cookies, and JSON-body scanning
   - Randomized marker-based payloads for simple WAF bypass
 
+
 ---
+
 
 ## 🛠️ Installation
 
