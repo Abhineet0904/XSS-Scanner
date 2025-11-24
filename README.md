@@ -90,7 +90,7 @@ Used when server echoes JSON :
 ## IV. Code Quality & Design Choices :
 
 1. **Marker-Based Payload Tracking**
-- Each payload embeds a unique UUID marker, enabling :
+Each payload embeds a unique UUID marker, enabling :
 - Precise reflection tracking
 - Handling HTML/JSON/script encoding differences
 - Avoiding ambiguous substring matches
