@@ -180,3 +180,6 @@ python xss_scanner.py --url http://test --params q --no-parallel
 ```
 python xss_scanner.py --url http://test --params q --out report.html
 ```
+
+
+**Note : Time taken to build this was 7 hours**
