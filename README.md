@@ -153,32 +153,30 @@ cd xss-scanner
 
 1. Basic GET scan :
 ```
-python3 scanner.py --url "http://example.com/search" --params q
+python xss_scanner.py --url "http://example.com/search" --params q
 ```
 
 2. POST form :
 ```
-python3 scanner.py --url "http://site.com" --params username message --method POST
+python xss_scanner.py --url "http://site.com" --params username message --method POST
 ```
 
 3. POST JSON :
 ```
-python3 scanner.py --url "http://api.com/v1" --params query --method POST --json
+python xss_scanner.py --url "http://api.com/v1" --params query --method POST --json
 ```
 
 4. Custom headers/cookies :
 ```
-python3 scanner.py --url http://test --params q \
-  --headers "User-Agent:Scanner,Referer:Test" \
-  --cookies "session:abcd1234"
+python xss_scanner.py --url http://test --params q --headers "User-Agent:Scanner,Referer:Test" --cookies "session:abcd1234"
 ```
 
 5. Disable parallel scanning :
 ```
-python3 scanner.py --url http://test --params q --no-parallel
+python xss_scanner.py --url http://test --params q --no-parallel
 ```
 
 6. Specify output file :
 ```
-python3 scanner.py --url http://test --params q --out report.html
+python xss_scanner.py --url http://test --params q --out report.html
 ```
