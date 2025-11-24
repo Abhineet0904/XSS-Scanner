@@ -6,8 +6,10 @@ A lightweight, educational **reflected-XSS scanner** that performs context-aware
 
 ---
 
+---
 
-## Features :
+
+## I. Features :
 - Context-aware payload generation (tag-name, attribute-name, attribute-value, text, JS, JSON).
 - Reflection detection with heuristic context inference.
 - GET/POST support with optional JSON request bodies.
@@ -16,7 +18,7 @@ A lightweight, educational **reflected-XSS scanner** that performs context-aware
 - Safe marker-based payload tracking.
 - Clean terminal output with color formatting.
 
-## Assumptions :
+## II. Assumptions :
 This tool is intended for educational use and makes the following assumptions :
 - Target accepts GET/POST parameters directly as key-value pairs.
 - Reflected XSS only is being tested — not stored or DOM-based XSS.
@@ -32,8 +34,10 @@ This tool is intended for educational use and makes the following assumptions :
 
 ---
 
+---
 
-## How PayloadGenerator Chooses Payloads (Context-Aware Design) :
+
+## III. How PayloadGenerator Chooses Payloads (Context-Aware Design) :
 The scanner uses a marker-based system (e.g., XSS-1a2b3c4d) to uniquely track reflections.
 Each context generates payloads designed to influence how the server outputs them :
 
@@ -80,8 +84,53 @@ Used when server echoes JSON :
 
 ---
 
+---
 
-## Installation
+
+## IV. Code Quality & Design Choices :
+
+1. **Marker-Based Payload Tracking**
+- Each payload embeds a unique UUID marker, enabling :
+- Precise reflection tracking
+- Handling HTML/JSON/script encoding differences
+- Avoiding ambiguous substring matches
+
+2. **Modular Architecture**
+- `PayloadGenerator` : responsible only for payloads.
+- `detect_context_heuristic` : pure function for inference.
+- `XSSScanner` : networking, scanning logic, reporting.
+- `main()` : user interface and argument parsing.
+This separation keeps code maintainable and testable.
+
+3. **ThreadPoolExecutor for Speed**
+Scanning uses parallel threads (default 8, max 15) :
+- Greatly reduces scan duration across multiple params & contexts.
+- Optional `--no-parallel` for environments where parallelism may break functionality.
+
+4. **Safe Defaults**
+- Timeouts prevent hanging requests.
+- GET requests don’t add unintended parameters.
+- Cookies/headers must be explicitly passed.
+
+5. **Clean HTML Output**
+- `<pre>` blocks for payloads.
+- Escaping via html.escape to prevent breaking the report itself.
+- UTC timestamp for reproducibility.
+
+6. **Simplicity over Full Accuracy**
+This is an educational tool, so :
+- No headless browser or DOM evaluation.
+- No JavaScript execution.
+- No advanced CSRF/session handling.
+- No stored or DOM-XSS detection.
+
+
+---
+
+---
+
+
+## V. Installation :
 
 1. Prerequisites :
 ```
@@ -97,5 +146,39 @@ cd xss-scanner
 
 ---
 
+---
 
-## Execution :
+
+## VI. Execution :
+
+1. Basic GET scan :
+```
+python3 scanner.py --url "http://example.com/search" --params q
+```
+
+2. POST form :
+```
+python3 scanner.py --url "http://site.com" --params username message --method POST
+```
+
+3. POST JSON :
+```
+python3 scanner.py --url "http://api.com/v1" --params query --method POST --json
+```
+
+4. Custom headers/cookies :
+```
+python3 scanner.py --url http://test --params q \
+  --headers "User-Agent:Scanner,Referer:Test" \
+  --cookies "session:abcd1234"
+```
+
+5. Disable parallel scanning :
+```
+python3 scanner.py --url http://test --params q --no-parallel
+```
+
+6. Specify output file :
+```
+python3 scanner.py --url http://test --params q --out report.html
+```
